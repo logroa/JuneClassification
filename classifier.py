@@ -5,40 +5,13 @@ Created on Fri Jun 25 13:32:46 2021
 @author: ltroa
 """
 
-import csv
-from sklearn import metrics
-
 import pandas as pd
 import matplotlib.pyplot as plt
-import time
-import warnings
 import numpy as np
-from sklearn.decomposition import TruncatedSVD
-from sklearn.preprocessing import normalize
-from sklearn.manifold import TSNE
-import seaborn as sns
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics._classification import accuracy_score, log_loss
+from sklearn.metrics._classification import log_loss
 from sklearn.linear_model import SGDClassifier
-from imblearn.over_sampling import SMOTE
-from collections import Counter
-from scipy.sparse import hstack
-from sklearn.multiclass import OneVsRestClassifier
-from sklearn.svm import SVC
-from sklearn.model_selection import StratifiedKFold 
-from collections import Counter, defaultdict
 from sklearn.calibration import CalibratedClassifierCV
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
-from sklearn.model_selection import GridSearchCV
-import math
-from sklearn.metrics import normalized_mutual_info_score
-from sklearn.ensemble import RandomForestClassifier
-
-from sklearn import model_selection
-from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelEncoder
 
 data = pd.read_csv("train.csv")
@@ -50,7 +23,7 @@ x = x.drop('id', axis=1)
 antiTuring = LabelEncoder()
 y = pd.DataFrame(antiTuring.fit_transform(data['target']), columns = ['target'])
 
-# print(x.describe())
+print(x.describe())
 
 X_train, X_test, Y_train, Y_test = train_test_split(x, y, test_size=.3, stratify=y)
 x_train, x_cv, y_train, y_cv = train_test_split(X_train, Y_train, stratify=Y_train, test_size=.3)
