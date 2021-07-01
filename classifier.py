@@ -142,7 +142,7 @@ turner.to_csv(path_or_buf='submission.csv', index = False)
 
 from lightgbm import LGBMClassifier
 
-a = [200]
+a = [10, 50, 100, 200, 500, 1000]
 md = [2, 3, 5, 10]
 
 logerrorCV = []
